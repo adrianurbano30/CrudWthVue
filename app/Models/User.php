@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Entry;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -11,11 +12,10 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    public function Entries()
+    {
+        return $this->hasMany('App\Models\Entry');
+    }
     protected $fillable = [
         'name',
         'email',
