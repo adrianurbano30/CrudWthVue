@@ -19,7 +19,7 @@
                        <li>{{$entri->title}}</li>
                      </a>
                    @empty
-                    <li>no tengo ni m</li>
+                    <li>I DOESNT HAVE ANY ENTRY</li>
                    @endforelse
                  </ul>
                 </div>

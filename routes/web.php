@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'GuestController@index');
-Route::get('/user/{user}', 'UserController@show')->name('authorshow');
+Route::get('/@/{user}', 'UserController@show')->name('authorshow');
 
 Route::get('/myentries','EntryController@index')->name('myentryindex')->middleware('auth');
 Route::get('/entries/create','EntryController@create')->name('entrycreate')->middleware('auth');

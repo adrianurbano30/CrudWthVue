@@ -16,8 +16,11 @@
                   @can('update',$entri)
 
                      <a href="{{route('entryedit',$entri)}}" class="btn btn-warning btn-pill">Edit Entry</a>
-
+                  @else
+                  <h3> {{$entri->user->name}} </h3>
                   @endcan
+
+
                 </div>
             </div>
         </div>
