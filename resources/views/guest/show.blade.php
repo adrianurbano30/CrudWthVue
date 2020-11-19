@@ -21,9 +21,9 @@
                   <p>published entries</p>
                   <ul>
                    @forelse($entris as $entri)
-
+                     <a href="{{route('entryshow',$entri->slug."-".$entri->id)}}">
                        <li>{{$entri->title}}</li>
-
+                      </a>
                    @empty
                     <li>no tengo ni m</li>
                    @endforelse

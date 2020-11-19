@@ -16,7 +16,7 @@ class entryRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'=>'required|min:7|max:25|unique:entries,id,'.auth()->id(),
+            'title'=>'required|min:7|max:50|unique:entries,id,'.auth()->id(),
             'content'=>'required|min:20|max:3000|'
         ];
     }

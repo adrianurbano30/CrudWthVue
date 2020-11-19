@@ -8,12 +8,15 @@ Auth::routes();
 Route::get('/', 'GuestController@index');
 Route::get('/user/{user}', 'UserController@show')->name('authorshow');
 
-Route::get('/myentries','EntryController@index')->name('myentryindex');
-Route::get('/entries/create','EntryController@create')->name('entrycreate');
-Route::get('/myentries/{entri}','EntryController@edit')->name('entryedit');
-Route::patch('/entries/{entri}','EntryController@update')->name('entryupdate');
-Route::post('/entries','EntryController@store')->name('entrystore');
-Route::get('/entries/{entri}','EntryController@show')->name('entryshow');
+Route::get('/myentries','EntryController@index')->name('myentryindex')->middleware('auth');
+Route::get('/entries/create','EntryController@create')->name('entrycreate')->middleware('auth');
+
+Route::get('/myentries/{entri}','EntryController@edit')->name('entryedit')->middleware('auth');
+Route::patch('/entries/{entri}','EntryController@update')->name('entryupdate')->middleware('auth');
+
+Route::post('/entries','EntryController@store')->name('entrystore')->middleware('auth');
+
+Route::get('/entries/{entryBySlug}','EntryController@show')->name('entryshow');
 
 
 //Route::get('/')

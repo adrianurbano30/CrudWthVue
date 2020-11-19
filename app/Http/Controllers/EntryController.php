@@ -11,7 +11,7 @@ class EntryController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     public function index()
@@ -20,9 +20,11 @@ class EntryController extends Controller
         return view('entries.index',compact('entris'));
     }
 
-    public function show(Entry $entri)
+    public function show(Entry $entryBySlug)
     {
-       return view('entries.show',compact('entri')) ;
+       return view('entries.show',[
+        'entri'=>$entryBySlug
+       ]) ;
     }
 
     public function create()

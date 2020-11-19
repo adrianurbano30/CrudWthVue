@@ -15,7 +15,7 @@
                 <div class="card-body">
                  <ul>
                    @forelse($entris as $entri)
-                     <a href="{{route('entryshow',$entri)}}">
+                     <a href="{{route('entryshow',$entri->slug.'-'.$entri->id)}}">
                        <li>{{$entri->title}}</li>
                      </a>
                    @empty

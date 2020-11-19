@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Exceptions\InvalidEntrySlugException;
+use App\Models\Entry;
+use App\Models\User;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -17,7 +20,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/';
 
     /**
      * The controller namespace for the application.
@@ -35,6 +38,22 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+         Route::bind('entryBySlug', function ($value) {
+          $parts = explode('-', $value);
+          $id = end($parts);
+          $entri = Entry::findOrFail($id);
+
+          if ($entri->slug.'-'.$entri->id == $value ) {
+              return $entri;
+          }else{
+                //return redirect()->route('myentryindex');
+             throw new InvalidEntrySlugException($entri);
+
+          }
+
+         });
+
         $this->configureRateLimiting();
 
         $this->routes(function () {
