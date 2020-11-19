@@ -43,11 +43,13 @@ class EntryController extends Controller
 
     public function edit(Entry $entri)
     {
+      $this->authorize('update',$entri);
       return view('entries.edit',['entri'=>$entri]);
     }
 
     public function update(Entry $entri,entryRequest $request)
     {
+         $this->authorize('update',$entri);
          $entri->update($request->validated());
          return redirect()->route('myentryindex')->with('status','publish has been updated sucessfully');
     }

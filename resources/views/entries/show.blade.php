@@ -13,10 +13,11 @@
 
                 <div class="card-footer">
 
-                  @if($entri->user_id==auth()->id())
+                  @can('update',$entri)
 
-                 <a href="{{route('entryedit',$entri)}}" class="btn btn-warning btn-pill">Edit Entry</a>
-                  @endif
+                     <a href="{{route('entryedit',$entri)}}" class="btn btn-warning btn-pill">Edit Entry</a>
+
+                  @endcan
                 </div>
             </div>
         </div>
